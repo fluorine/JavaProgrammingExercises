@@ -30,6 +30,10 @@ public class ListFunctions {
 		System.out.print("\n  List:     " + list.toString());
 		System.out.println("  Reversed: " + reverse(list));
 
+		// Odd or Even positions
+		System.out.print("   Odd items: " + oddItems(list));
+		System.out.println("  Even items: " + evenItems(list));
+
 		// Some operations
 		System.out.println("  Maximum value in list: " + max(list));
 		System.out.println("  Minimum value in list: " + min(list) + "\n");
@@ -70,6 +74,31 @@ public class ListFunctions {
 			return new FuncList<T>(list.head, rev);
 		} else {
 			return reverse(list.tail, new FuncList<T>(list.head, rev));
+		}
+	}
+
+	public static <T> FuncList<T> oddItems(FuncList<T> list) {
+		return reverse(pickPositions(list, true));
+	}
+
+	public static <T> FuncList<T> evenItems(FuncList<T> list) {
+		return reverse(pickPositions(list, false));
+	}
+
+	private static <T> FuncList<T> pickPositions(FuncList<T> list, boolean able) {
+		if (able) {
+			if (list == null) {
+				return null;
+			} else {
+				return new FuncList<T>(list.head, pickPositions(list.tail,
+						false));
+			}
+		} else {
+			if (list == null) {
+				return null;
+			} else {
+				return pickPositions(list.tail, true);
+			}
 		}
 	}
 }

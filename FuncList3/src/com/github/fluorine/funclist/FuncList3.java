@@ -1,5 +1,7 @@
 package com.github.fluorine.funclist;
 
+import java.math.BigInteger;
+
 import javarepl.REPL;
 import com.github.fluorine.funclist.FuncList;
 
@@ -38,6 +40,13 @@ public class FuncList3 {
 		// into a new sorted list. Then display it.
 		FuncList<Integer> merged = mergeLists(a, b);
 		System.out.println("  Merged list:\n   " + merged.toString());
+
+		// Produce a list of Fibonacci numbers
+		System.out.println("  List of fibonacci numbers:\n    ");
+		FuncList<BigInteger> fibo = produceFibonacci();
+		for (BigInteger i : fibo) {
+			System.out.print(i + " ");
+		}
 	}
 
 	/**
@@ -144,6 +153,26 @@ public class FuncList3 {
 			} else {
 				return new FuncList<T>(b.head, mergeLists(b.tail, a));
 			}
+		}
+	}
+
+	/**
+	 * @return List of Fibonacci numbers.
+	 */
+	public static FuncList<BigInteger> produceFibonacci() {
+		return new FuncList<BigInteger>(new BigInteger("1"),
+				new FuncList<BigInteger>(new BigInteger("1"), produceFibonacci(
+						new BigInteger("1"), new BigInteger("1"), 3)));
+	}
+
+	public static FuncList<BigInteger> produceFibonacci(BigInteger a,
+			BigInteger b, int count) {
+		if (count >= 100) {
+			return new FuncList<BigInteger>(a.add(b));
+		} else {
+			BigInteger total = a.add(b);
+			return new FuncList<BigInteger>(total, produceFibonacci(b, total,
+					count + 1));
 		}
 	}
 }

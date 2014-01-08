@@ -129,7 +129,7 @@ public abstract class SortingAlgorithm<T extends Comparable<T>> {
 		// Settings
 		Integer[] a = array;
 		SortingAlgorithm<?>[] algorithms = { new SelectionSort<Integer>(a),
-				new BubbleSort<Integer>(a) };
+				new BubbleSort<Integer>(a), new InsertionSort(a) };
 
 		for (SortingAlgorithm i : algorithms) {
 			printSortingAlgorithm(i);

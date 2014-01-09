@@ -17,7 +17,7 @@ public class BubbleSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 			for (int k = 0; k < i; k++) {
 				if (array[k].compareTo(array[k + 1]) == order) {
 					swapItems(array, k, k + 1);
-					delay();
+					delay(order);
 				}
 			}
 		}

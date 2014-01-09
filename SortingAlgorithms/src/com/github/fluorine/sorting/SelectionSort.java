@@ -17,7 +17,7 @@ public class SelectionSort<T extends Comparable<T>> extends SortingAlgorithm<T> 
 			for (int k = i + 1; k < array.length; k++) {
 				if (array[i].compareTo(array[k]) == order) {
 					SortingAlgorithm.swapItems(array, i, k);
-					delay();
+					delay(order);
 				}
 			}
 		}

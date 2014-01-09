@@ -18,7 +18,7 @@ public class InsertionSort<T extends Comparable<T>> extends SortingAlgorithm<T> 
 			int i;
 			for (i = a; i > 0 && item.compareTo(array[i - 1]) != order; i--) {
 				array[i] = array[i - 1];
-				delay();
+				delay(order);
 			}
 
 			array[i] = item;

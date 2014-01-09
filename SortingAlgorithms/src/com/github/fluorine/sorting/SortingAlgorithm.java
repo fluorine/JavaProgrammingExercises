@@ -9,6 +9,8 @@ package com.github.fluorine.sorting;
  *            A Comparable<T> type.
  */
 public abstract class SortingAlgorithm<T extends Comparable<T>> {
+	private int stepsCounter = 0;
+
 	/**
 	 * Name of the algorithm.
 	 */
@@ -33,7 +35,6 @@ public abstract class SortingAlgorithm<T extends Comparable<T>> {
 	 * Steps counter for algorithm.
 	 */
 	public final long steps;
-	private int stepsCounter = 0;
 
 	// Constructors
 	public SortingAlgorithm(T[] original) {
@@ -89,8 +90,9 @@ public abstract class SortingAlgorithm<T extends Comparable<T>> {
 	/**
 	 * Delay time to measure performance.
 	 */
-	protected void delay() {
-		stepsCounter++;
+	protected void delay(int order) {
+		if (order == 1)
+			stepsCounter++;
 	}
 
 	/**
@@ -126,10 +128,16 @@ public abstract class SortingAlgorithm<T extends Comparable<T>> {
 		final Integer[] array = new Integer[] { 18, 2, 13, 1, 17, 9, 8, 10, 25,
 				3, 6, 16, 23, 4, 20, 12, 24, 15, 7, 5, 21, 14, 22, 11, 19 };
 
+		// final Integer[] array = new Integer[] { 1, 2, 3, 7, 4, 5, 6, 7 };
+
+		// final Integer[] array = new Integer[] { 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+		// };
+
 		// Settings
 		Integer[] a = array;
 		SortingAlgorithm<?>[] algorithms = { new SelectionSort<Integer>(a),
-				new BubbleSort<Integer>(a), new InsertionSort(a) };
+				new BubbleSort<Integer>(a), new InsertionSort(a),
+				new QuickSort(a) };
 
 		for (SortingAlgorithm i : algorithms) {
 			printSortingAlgorithm(i);

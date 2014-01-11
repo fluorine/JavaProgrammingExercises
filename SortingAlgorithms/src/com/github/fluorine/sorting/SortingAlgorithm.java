@@ -137,7 +137,7 @@ public abstract class SortingAlgorithm<T extends Comparable<T>> {
 		Integer[] a = array;
 		SortingAlgorithm<?>[] algorithms = { new SelectionSort<Integer>(a),
 				new BubbleSort<Integer>(a), new InsertionSort(a),
-				new QuickSort(a), new MergeSort(a) };
+				new QuickSort(a), new MergeSort(a), new StoogeSort(a) };
 
 		for (SortingAlgorithm i : algorithms) {
 			printSortingAlgorithm(i);

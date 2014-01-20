@@ -26,6 +26,7 @@ public class StoogeSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 			return;
 
 		if (array[start].compareTo(array[limit - 1]) == order) {
+			delay(order);
 			swapItems(array, start, limit - 1);
 		}
 

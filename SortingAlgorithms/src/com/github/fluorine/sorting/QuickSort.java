@@ -3,7 +3,6 @@ package com.github.fluorine.sorting;
 public class QuickSort<T extends Comparable<T>> extends SortingAlgorithm<T> {
 	public QuickSort(T[] original) {
 		super(original);
-		// TODO Auto-generated constructor stub
 	}
 
 	private int order;
